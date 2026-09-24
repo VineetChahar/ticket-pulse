@@ -1,4 +1,0 @@
-[ingestion_agent] run_id=smoke1: streaming 2 days, 140 tickets, 0.1s/day
-[ingestion_agent] day 0 streamed: 60 tickets
-[ingestion_agent] day 1 streamed: 80 tickets (final)
-[ingestion_agent] run_id=smoke1 complete

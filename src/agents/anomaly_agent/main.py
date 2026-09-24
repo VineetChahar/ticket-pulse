@@ -144,6 +144,19 @@ def close_day_and_summarize(state: RunState, day_index: int, is_final: bool) -> 
     )
 
 
+def get_or_create_state(states: dict[str, RunState], run_id: str) -> RunState:
+    """NOT states.setdefault(run_id, RunState(run_id)) -- dict.setdefault
+    evaluates its default argument eagerly, every call, whether or not the
+    key is already present. RunState.__init__ truncates day_counts.csv and
+    tickets_scored.jsonl on construction, so that form silently re-truncated
+    both files on EVERY message, leaving only the last day's/ticket's data
+    after a run finished. Found by noticing day_counts.csv only had the
+    final day's rows after a 2-day smoke test -- see LEARNING.md."""
+    if run_id not in states:
+        states[run_id] = RunState(run_id)
+    return states[run_id]
+
+
 def run(broker: Broker) -> None:
     log.info("started, waiting on %s", config.Q_CLASSIFIED)
     states: dict[str, RunState] = {}
@@ -153,7 +166,7 @@ def run(broker: Broker) -> None:
         if msg is None:
             continue
 
-        state = states.setdefault(msg.run_id, RunState(msg.run_id))
+        state = get_or_create_state(states, msg.run_id)
 
         if msg.kind == "boundary":
             summary = close_day_and_summarize(state, msg.day_index, msg.is_final)

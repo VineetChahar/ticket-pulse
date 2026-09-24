@@ -1,0 +1,99 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  translation_agent:
+    build: .
+    command: python -m src.agents.translation_agent.main
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      # Persists the downloaded m2m100 weights (~1.9GB, public HF Hub, no
+      # login) across container restarts/rebuilds -- same pattern as
+      # ollama_data below for Ollama's model.
+      - hf_cache:/root/.cache/huggingface
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  classification_agent:
+    build: .
+    command: python -m src.agents.classification_agent.main
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - hf_cache:/root/.cache/huggingface
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  anomaly_agent:
+    build: .
+    command: python -m src.agents.anomaly_agent.main
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      REPORTS_DIR: /app/reports
+    volumes:
+      - ./reports:/app/reports
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  synthesis_agent:
+    build: .
+    command: python -m src.agents.synthesis_agent.main
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:3b-instruct}
+      REPORTS_DIR: /app/reports
+    volumes:
+      - ./reports:/app/reports
+    depends_on:
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+
+  ingestion_agent:
+    build: .
+    command: python -m src.agents.ingestion_agent.main --data data/synthetic/${DATA_FILE:-tickets.jsonl} --run-id ${RUN_ID:-run1} --day-seconds ${DAY_SECONDS:-0.1}
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - ./data:/app/data:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+      translation_agent:
+        condition: service_started
+      classification_agent:
+        condition: service_started
+      anomaly_agent:
+        condition: service_started
+      synthesis_agent:
+        condition: service_started
+    profiles: ["run"]  # only starts on `docker compose --profile run up ingestion_agent`
+
+volumes:
+  ollama_data:
+  hf_cache:

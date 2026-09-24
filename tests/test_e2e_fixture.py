@@ -36,7 +36,7 @@ FIXTURE = [
 ]
 
 
-def fake_translate(text: str, locale: str) -> TranslationResult:
+def fake_translate(text: str, locale: str, **kwargs) -> TranslationResult:
     return TranslationResult(translated_text=text, back_translation_score=None)
 
 

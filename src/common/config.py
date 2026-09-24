@@ -33,6 +33,13 @@ OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "qwen2.5:3b-instruct")
 TRANSLATION_MODEL = os.environ.get("TRANSLATION_MODEL", "facebook/m2m100_418M")
 CANONICAL_LANG = "en"
 
+# Fraction of non-English tickets that get the (2x-cost) back-translation
+# consistency check, rather than just the one forward translate needed for
+# the pipeline itself. The eval spec asks for this metric "across a held-out
+# sample," not on every ticket -- see translator.py's
+# translate_with_consistency_check docstring.
+BACK_TRANSLATION_SAMPLE_RATE = _float("BACK_TRANSLATION_SAMPLE_RATE", 0.20)
+
 # mteb/amazon_massive_scenario's config names ("zh-CN") don't always match
 # m2m100's ISO 639-1 codes ("zh") -- this project only samples the locales
 # on the left, so an explicit table is simpler and safer than a generic
@@ -62,7 +69,7 @@ Q_CLASSIFIED = "tickets:classified"
 Q_DAY_SUMMARIES = "days:summary"
 
 # Anomaly detector defaults. Tuned against the known injected anomaly
-# windows by eval/tune_anomaly_threshold.py -- see README's "Anomaly
+# windows by eval/run_eval.py's threshold sweep -- see README's "Anomaly
 # detection" section for the real sweep numbers behind these values.
 CUSUM_THRESHOLD_STD = _float("CUSUM_THRESHOLD_STD", 3.5)
 CUSUM_DRIFT_STD = _float("CUSUM_DRIFT_STD", 0.5)

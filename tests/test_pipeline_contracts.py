@@ -34,7 +34,7 @@ def test_translation_fills_only_its_own_fields(monkeypatch):
     monkeypatch.setattr(
         translation_main,
         "translate_with_consistency_check",
-        lambda text, locale: TranslationResult("hello", 0.87),
+        lambda text, locale, **kwargs: TranslationResult("hello", 0.87),
     )
     msg = make_ticket()
     out = translation_main.process_ticket(msg)
@@ -46,7 +46,7 @@ def test_translation_fills_only_its_own_fields(monkeypatch):
 
 
 def test_translation_degrades_gracefully_on_model_failure(monkeypatch):
-    def boom(text, locale):
+    def boom(text, locale, **kwargs):
         raise RuntimeError("model exploded")
 
     monkeypatch.setattr(translation_main, "translate_with_consistency_check", boom)

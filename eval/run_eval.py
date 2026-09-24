@@ -43,12 +43,17 @@ def load_tickets_scored(run_id: str) -> pd.DataFrame:
 
 
 def eval_translation(df: pd.DataFrame) -> dict:
+    # back_translation_score is null for English tickets (nothing to
+    # translate) AND for the non-English tickets the translation agent
+    # didn't sample for the (2x-cost) round-trip check -- see
+    # config.BACK_TRANSLATION_SAMPLE_RATE. Both are "not scored"; this
+    # metric is intentionally over a held-out sample, not every ticket.
     scored = df[df["back_translation_score"].notna()]
     if scored.empty:
         return {"n_scored": 0}
     return {
         "n_scored": int(len(scored)),
-        "n_canonical_language_skipped": int(len(df) - len(scored)),
+        "n_not_sampled_or_canonical": int(len(df) - len(scored)),
         "mean": float(scored["back_translation_score"].mean()),
         "median": float(scored["back_translation_score"].median()),
         "p10": float(scored["back_translation_score"].quantile(0.10)),

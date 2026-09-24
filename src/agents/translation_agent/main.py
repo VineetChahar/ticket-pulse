@@ -8,6 +8,7 @@ work -- a stage must never sit on a day's boundary marker.
 from __future__ import annotations
 
 import logging
+import random
 import sys
 
 from src.common import config
@@ -23,7 +24,10 @@ def process_ticket(msg: TicketMessage) -> TicketMessage:
     """Pure per-ticket transform, exercised directly by tests (mocking
     translate_with_consistency_check) without needing a broker or Redis."""
     try:
-        result = translate_with_consistency_check(msg.text or "", msg.locale or config.CANONICAL_LANG)
+        check_quality = random.random() < config.BACK_TRANSLATION_SAMPLE_RATE
+        result = translate_with_consistency_check(
+            msg.text or "", msg.locale or config.CANONICAL_LANG, check_quality=check_quality
+        )
         msg.translated_text = result.translated_text
         msg.back_translation_score = result.back_translation_score
     except Exception:

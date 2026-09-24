@@ -32,11 +32,17 @@ CANONICAL_LOCALE = "en"
 
 # Per-category baseline daily volume (Poisson lambda). Deliberately uneven,
 # like real ticket traffic: some categories are just chattier than others.
+# Kept modest (~46/day, ~1600 tickets over 35 days) rather than the ~72/day
+# an earlier pass used -- CPU-only zero-shot classification (2 taxonomies)
+# and translation (2 model calls for a sampled subset, see
+# config.BACK_TRANSLATION_SAMPLE_RATE) each cost real wall-clock per ticket,
+# and this project runs on a laptop, not a GPU box. Still comfortably enough
+# volume for every injected window to produce a real, visible spike.
 BASELINE_LAMBDA = {
-    "alarm": 4, "audio": 3, "calendar": 6, "cooking": 2, "datetime": 5,
-    "email": 7, "general": 6, "iot": 3, "lists": 4, "music": 5, "news": 3,
-    "play": 5, "qa": 6, "recommendation": 3, "social": 4, "takeaway": 2,
-    "transport": 4, "weather": 5,
+    "alarm": 2, "audio": 2, "calendar": 4, "cooking": 1, "datetime": 3,
+    "email": 4, "general": 4, "iot": 2, "lists": 2, "music": 3, "news": 2,
+    "play": 3, "qa": 4, "recommendation": 2, "social": 2, "takeaway": 1,
+    "transport": 2, "weather": 3,
 }
 
 # Ground truth: known injected anomaly windows (day range inclusive).

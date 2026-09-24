@@ -1,0 +1,48 @@
+{"text": "what time is it in switzerland", "locale": "en", "true_category": "datetime", "confusable_with": ["calendar", "alarm"]}
+{"text": "what date is easter sunday this year", "locale": "en", "true_category": "datetime", "confusable_with": ["calendar", "alarm"]}
+{"text": "what time is it in cleveland ohio", "locale": "en", "true_category": "datetime", "confusable_with": ["calendar", "alarm"]}
+{"text": "what time is it in dubai", "locale": "en", "true_category": "datetime", "confusable_with": ["calendar", "alarm"]}
+{"text": "delete all events from calendar", "locale": "en", "true_category": "calendar", "confusable_with": ["datetime", "alarm"]}
+{"text": "clear my calendar", "locale": "en", "true_category": "calendar", "confusable_with": ["datetime", "alarm"]}
+{"text": "is monday free after noon", "locale": "en", "true_category": "calendar", "confusable_with": ["datetime", "alarm"]}
+{"text": "tell me my meetings this wednesday morning", "locale": "en", "true_category": "calendar", "confusable_with": ["datetime", "alarm"]}
+{"text": "what alarms have i set for tomorrow", "locale": "en", "true_category": "alarm", "confusable_with": ["datetime", "calendar"]}
+{"text": "set an alarm on wednesday noon so i can register for early adopters program", "locale": "en", "true_category": "alarm", "confusable_with": ["datetime", "calendar"]}
+{"text": "stop seven am alarm", "locale": "en", "true_category": "alarm", "confusable_with": ["datetime", "calendar"]}
+{"text": "show me all scheduled alarms", "locale": "en", "true_category": "alarm", "confusable_with": ["datetime", "calendar"]}
+{"text": "what is the name of song", "locale": "en", "true_category": "music", "confusable_with": ["audio", "play"]}
+{"text": "please save this song to my favorites", "locale": "en", "true_category": "music", "confusable_with": ["audio", "play"]}
+{"text": "super song", "locale": "en", "true_category": "music", "confusable_with": ["audio", "play"]}
+{"text": "this song is too good", "locale": "en", "true_category": "music", "confusable_with": ["audio", "play"]}
+{"text": "please decrease the volume of this song", "locale": "en", "true_category": "audio", "confusable_with": ["music", "play"]}
+{"text": "can you speak a little louder", "locale": "en", "true_category": "audio", "confusable_with": ["music", "play"]}
+{"text": "up", "locale": "en", "true_category": "audio", "confusable_with": ["music", "play"]}
+{"text": "increase volume", "locale": "en", "true_category": "audio", "confusable_with": ["music", "play"]}
+{"text": "play rein in blood by slayer at five am tomorrow to make sure i actually wake up", "locale": "en", "true_category": "play", "confusable_with": ["music", "audio"]}
+{"text": "music one", "locale": "en", "true_category": "play", "confusable_with": ["music", "audio"]}
+{"text": "please play classical music", "locale": "en", "true_category": "play", "confusable_with": ["music", "audio"]}
+{"text": "play cricket", "locale": "en", "true_category": "play", "confusable_with": ["music", "audio"]}
+{"text": "olly what is the total number of oceans in the world", "locale": "en", "true_category": "qa", "confusable_with": ["general", "news"]}
+{"text": "can i have stock rate list of ola and uber", "locale": "en", "true_category": "qa", "confusable_with": ["general", "news"]}
+{"text": "do you know actor surya", "locale": "en", "true_category": "qa", "confusable_with": ["general", "news"]}
+{"text": "what is the stock price of nike today", "locale": "en", "true_category": "qa", "confusable_with": ["general", "news"]}
+{"text": "tell me when and if i should buy a new home", "locale": "en", "true_category": "general", "confusable_with": ["qa", "news"]}
+{"text": "we had great dinner today", "locale": "en", "true_category": "general", "confusable_with": ["qa", "news"]}
+{"text": "about cricket", "locale": "en", "true_category": "general", "confusable_with": ["qa", "news"]}
+{"text": "why do we continue to have daylight savings time", "locale": "en", "true_category": "general", "confusable_with": ["qa", "news"]}
+{"text": "what were the cities affected by the earthquake", "locale": "en", "true_category": "news", "confusable_with": ["qa", "general"]}
+{"text": "what are the latest world news", "locale": "en", "true_category": "news", "confusable_with": ["qa", "general"]}
+{"text": "what is happening in the world today", "locale": "en", "true_category": "news", "confusable_with": ["qa", "general"]}
+{"text": "give me the news on my provider", "locale": "en", "true_category": "news", "confusable_with": ["qa", "general"]}
+{"text": "i need to know where to get chicken wings in benton are", "locale": "en", "true_category": "recommendation", "confusable_with": ["cooking", "takeaway"]}
+{"text": "show me where i can find a hamburger", "locale": "en", "true_category": "recommendation", "confusable_with": ["cooking", "takeaway"]}
+{"text": "what are the vietnamese restaurants in the area", "locale": "en", "true_category": "recommendation", "confusable_with": ["cooking", "takeaway"]}
+{"text": "alexa i want to know the best super market in this local area", "locale": "en", "true_category": "recommendation", "confusable_with": ["cooking", "takeaway"]}
+{"text": "how long do you cook an egg over easy", "locale": "en", "true_category": "cooking", "confusable_with": ["recommendation", "takeaway"]}
+{"text": "what ingredients are needed for making biryani", "locale": "en", "true_category": "cooking", "confusable_with": ["recommendation", "takeaway"]}
+{"text": "olly how do i make meatloaf", "locale": "en", "true_category": "cooking", "confusable_with": ["recommendation", "takeaway"]}
+{"text": "select the type of meal whether a break fast lunch dinner", "locale": "en", "true_category": "cooking", "confusable_with": ["recommendation", "takeaway"]}
+{"text": "what's up with my order", "locale": "en", "true_category": "takeaway", "confusable_with": ["recommendation", "cooking"]}
+{"text": "from wangs kitchen restaurant home delivery for a chicken manchow soup", "locale": "en", "true_category": "takeaway", "confusable_with": ["recommendation", "cooking"]}
+{"text": "order take-out pizza from domino's for seven p. m.", "locale": "en", "true_category": "takeaway", "confusable_with": ["recommendation", "cooking"]}
+{"text": "order me a bowl from chipotle take-out", "locale": "en", "true_category": "takeaway", "confusable_with": ["recommendation", "cooking"]}

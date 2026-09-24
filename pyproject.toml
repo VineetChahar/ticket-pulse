@@ -1,0 +1,42 @@
+[project]
+name = "ticket-pulse"
+version = "0.1.0"
+description = "Multi-agent cross-lingual support ticket triage with temporal anomaly detection"
+requires-python = ">=3.11"
+dependencies = [
+    "redis>=5.0",
+    "pydantic>=2.7",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scipy>=1.13",
+    "statsmodels>=0.14",
+    "scikit-learn>=1.5",
+    "python-dotenv>=1.0",
+    "pyyaml>=6.0",
+    "typer>=0.12",
+    "transformers>=4.44",
+    "torch>=2.3",
+    "sentencepiece>=0.2",
+    "datasets>=2.20",
+    "requests>=2.32",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "fakeredis>=2.23",
+    "matplotlib>=3.9",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: downloads/loads real HF models; excluded from default run, use `pytest -m slow` or `make test-slow`",
+]
+addopts = "-m 'not slow'"

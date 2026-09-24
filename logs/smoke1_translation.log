@@ -1,0 +1,39 @@
+[translation_agent] started, waiting on tickets:raw
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[translation_agent] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[translation_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/tokenizer_config.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%22c0acb40bd22d2a992d273bb6a2b1c99c37613e4f%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/tokenizer_config.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%22c0acb40bd22d2a992d273bb6a2b1c99c37613e4f%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/vocab.json "HTTP/1.1 307 Temporary Redirect"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/vocab.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fvocab.json=&etag=%22380e263bf4efc45fa72251fb19336a9593307bc4%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/vocab.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fvocab.json=&etag=%22380e263bf4efc45fa72251fb19336a9593307bc4%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/sentencepiece.bpe.model "HTTP/1.1 302 Found"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M/xet-read-token/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/special_tokens_map.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fspecial_tokens_map.json=&etag=%22c6c3195f9bb7856df9a3fdd0252bcf99ff209f5d%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/special_tokens_map.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fspecial_tokens_map.json=&etag=%22c6c3195f9bb7856df9a3fdd0252bcf99ff209f5d%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/tokenizer.json "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/config.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fconfig.json=&etag=%2293359f73052bad5dc918b1d53c1c75e89fd6a257%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/config.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fconfig.json=&etag=%2293359f73052bad5dc918b1d53c1c75e89fd6a257%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M/commits/main "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/512 [00:00<?, ?it/s]Loading weights: 100%|██████████| 512/512 [00:00<00:00, 31581.57it/s]
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M/discussions?p=0 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M/commits/refs%2Fpr%2F27 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/refs%2Fpr%2F27/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/refs%2Fpr%2F27/model.safetensors "HTTP/1.1 302 Found"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/m2m100_418M/xet-read-token/ae6407352f7f86e328c0f0678d466fc4246e78b3 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/facebook/m2m100_418M/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+[translation_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/generation_config.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%22ba941101cd3e90b113db16712f4a20372268e767%22 "HTTP/1.1 200 OK"
+[translation_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/m2m100_418M/55c2e61bbf05dfb8d7abccdc3fae6fc8512fd636/generation_config.json?%2Ffacebook%2Fm2m100_418M%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%22ba941101cd3e90b113db16712f4a20372268e767%22 "HTTP/1.1 200 OK"
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/multiprocessing/resource_tracker.py:475: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/loky-32018-jxnxlctf'}
+  warnings.warn(

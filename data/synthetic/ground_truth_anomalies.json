@@ -1,0 +1,23 @@
+{
+  "windows": [
+    {
+      "category": "iot",
+      "start_day": 10,
+      "end_day": 13,
+      "multiplier": 5.0
+    },
+    {
+      "category": "weather",
+      "start_day": 22,
+      "end_day": 23,
+      "multiplier": 6.0
+    },
+    {
+      "category": "transport",
+      "start_day": 29,
+      "end_day": 30,
+      "multiplier": 2.5
+    }
+  ],
+  "n_days": 35
+}

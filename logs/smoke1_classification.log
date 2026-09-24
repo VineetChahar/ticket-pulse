@@ -1,0 +1,31 @@
+[classification_agent] started, waiting on tickets:translated
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[classification_agent] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[classification_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/config.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Fconfig.json=&etag=%22dfc96c728b40cc131e46b1c424c8e072d52b6d74%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/config.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Fconfig.json=&etag=%22dfc96c728b40cc131e46b1c424c8e072d52b6d74%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/bart-large-mnli/xet-read-token/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/515 [00:00<?, ?it/s]Loading weights: 100%|██████████| 515/515 [00:00<00:00, 7188.62it/s]
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/tokenizer_config.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%22be4d21d94f3b4687e5a54d84bf6ab46ed0f8defd%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/tokenizer_config.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%22be4d21d94f3b4687e5a54d84bf6ab46ed0f8defd%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/bart-large-mnli/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/models/facebook/bart-large-mnli/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/vocab.json "HTTP/1.1 307 Temporary Redirect"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/vocab.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Fvocab.json=&etag=%220a39732b2d8be8e493cab3da68b68cc3e28221de%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/vocab.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Fvocab.json=&etag=%220a39732b2d8be8e493cab3da68b68cc3e28221de%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/merges.txt "HTTP/1.1 307 Temporary Redirect"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/merges.txt?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Fmerges.txt=&etag=%22226b0752cac7789c48f0cb3ec53eda48b7be36cc%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/merges.txt?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Fmerges.txt=&etag=%22226b0752cac7789c48f0cb3ec53eda48b7be36cc%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/tokenizer.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Ftokenizer.json=&etag=%22ad0bcbeb288f0d1373d88e0762e66357f55b8311%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/facebook/bart-large-mnli/d7645e127eaf1aefc7862fd59a17a5aa8558b8ce/tokenizer.json?%2Ffacebook%2Fbart-large-mnli%2Fresolve%2Fmain%2Ftokenizer.json=&etag=%22ad0bcbeb288f0d1373d88e0762e66357f55b8311%22 "HTTP/1.1 200 OK"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+[classification_agent] HTTP Request: HEAD https://huggingface.co/facebook/bart-large-mnli/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/multiprocessing/resource_tracker.py:475: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/loky-32019-sqtnrhrg'}
+  warnings.warn(

@@ -17,14 +17,14 @@ import logging
 import os
 import sys
 from collections import defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 import numpy as np
 
+from src.agents.anomaly_agent.detector import cusum_detect, poisson_rate_detect
 from src.common import config
 from src.common.broker import Broker
 from src.common.schemas import AnomalyFlag, CategoryDayCount, DaySummary, TicketMessage
-from src.agents.anomaly_agent.detector import cusum_detect, poisson_rate_detect
 
 logging.basicConfig(level=logging.INFO, format="[anomaly_agent] %(message)s")
 log = logging.getLogger(__name__)
@@ -38,7 +38,7 @@ class RunState:
         self.run_id = run_id
         self.today_counts: dict[str, int] = defaultdict(int)
         self.history: dict[str, list[int]] = defaultdict(list)  # category -> counts per day, 0-filled
-        self.day0_date = datetime.now(tz=timezone.utc)
+        self.day0_date = datetime.now(tz=UTC)
         self.csv_path = os.path.join(config.REPORTS_DIR, run_id, "day_counts.csv")
         self.tickets_path = os.path.join(config.REPORTS_DIR, run_id, "tickets_scored.jsonl")
         os.makedirs(os.path.dirname(self.csv_path), exist_ok=True)

@@ -11,10 +11,10 @@ import logging
 import random
 import sys
 
+from src.agents.translation_agent.translator import translate_with_consistency_check
 from src.common import config
 from src.common.broker import Broker
 from src.common.schemas import TicketMessage
-from src.agents.translation_agent.translator import translate_with_consistency_check
 
 logging.basicConfig(level=logging.INFO, format="[translation_agent] %(message)s")
 log = logging.getLogger(__name__)

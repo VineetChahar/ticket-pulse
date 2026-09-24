@@ -13,6 +13,7 @@ from functools import lru_cache
 from src.common import config
 from src.common.similarity import text_similarity
 
+
 @lru_cache(maxsize=1)
 def _pipeline():
     import torch
@@ -55,7 +56,7 @@ def translate(text: str, src_locale: str, tgt_lang: str = config.CANONICAL_LANG)
 
 
 class TranslationResult:
-    __slots__ = ("translated_text", "back_translation_score")
+    __slots__ = ("back_translation_score", "translated_text")
 
     def __init__(self, translated_text: str, back_translation_score: float | None) -> None:
         self.translated_text = translated_text

@@ -8,24 +8,24 @@ real models)."""
 
 from __future__ import annotations
 
-from src.common.schemas import TicketMessage
-from src.agents.translation_agent import main as translation_main
-from src.agents.translation_agent.translator import TranslationResult
 from src.agents.classification_agent import main as classification_main
 from src.agents.classification_agent.classifier import ClassificationResult
+from src.agents.translation_agent import main as translation_main
+from src.agents.translation_agent.translator import TranslationResult
+from src.common.schemas import TicketMessage
 
 
 def make_ticket(**overrides) -> TicketMessage:
-    base = dict(
-        kind="ticket",
-        run_id="test-run",
-        day_index=0,
-        ticket_id="t1",
-        timestamp="2026-01-01T00:00:00Z",
-        locale="es",
-        true_category="weather",
-        text="hola",
-    )
+    base = {
+        "kind": "ticket",
+        "run_id": "test-run",
+        "day_index": 0,
+        "ticket_id": "t1",
+        "timestamp": "2026-01-01T00:00:00Z",
+        "locale": "es",
+        "true_category": "weather",
+        "text": "hola",
+    }
     base.update(overrides)
     return TicketMessage(**base)
 

@@ -7,10 +7,10 @@ from __future__ import annotations
 import logging
 import sys
 
+from src.agents.classification_agent.classifier import classify
 from src.common import config
 from src.common.broker import Broker
 from src.common.schemas import TicketMessage
-from src.agents.classification_agent.classifier import classify
 
 logging.basicConfig(level=logging.INFO, format="[classification_agent] %(message)s")
 log = logging.getLogger(__name__)

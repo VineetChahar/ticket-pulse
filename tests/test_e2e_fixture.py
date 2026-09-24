@@ -11,14 +11,14 @@ from __future__ import annotations
 
 import requests
 
-from src.common import config
-from src.common.schemas import TicketMessage
-from src.agents.translation_agent import main as translation_main
-from src.agents.translation_agent.translator import TranslationResult
+from src.agents.anomaly_agent.main import RunState, close_day_and_summarize
 from src.agents.classification_agent import main as classification_main
 from src.agents.classification_agent.classifier import ClassificationResult
-from src.agents.anomaly_agent.main import RunState, close_day_and_summarize
 from src.agents.synthesis_agent.narrative import generate_report
+from src.agents.translation_agent import main as translation_main
+from src.agents.translation_agent.translator import TranslationResult
+from src.common import config
+from src.common.schemas import TicketMessage
 
 FIXTURE = [
     # (day, locale, category, text)
@@ -88,5 +88,6 @@ def test_injected_spike_flows_through_to_a_grounded_report(tmp_path, monkeypatch
     assert "20" in markdown
 
     # every ticket was persisted for eval, in true/predicted-category form
-    scored_lines = open(state.tickets_path).read().strip().splitlines()
+    with open(state.tickets_path) as f:
+        scored_lines = f.read().strip().splitlines()
     assert len(scored_lines) == len(FIXTURE)

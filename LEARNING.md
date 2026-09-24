@@ -146,6 +146,36 @@ numbers in a confusing way while debugging. `make flush` (or
 mitigation; a real system would want a cancel-run message or a per-run
 queue namespace instead.
 
+## 7. The real run traced anomaly-detection recall to a classification bug, not detector math
+
+Once the full real run finished, anomaly-detection recall against the 3
+injected windows was 0.25 (2 of 8 known category-days) at every threshold
+tried in the sweep — flat, not improving as the threshold loosened, which
+is the tell that something upstream was capping it rather than the
+detectors simply being under-tuned.
+
+Traced it by comparing the *true* injected category (`true_category` in
+`tickets_scored.jsonl`, known from generation) against what the classifier
+actually predicted, for the two undetected windows. The `iot` window (days
+10-13, a real 5x spike — 39 true iot tickets landed there) had essentially
+0% classification accuracy: 56 of 98 true iot tickets across the whole run
+got predicted as `recommendation` instead. `general`, `qa`, and `cooking`
+show the same pattern into the same sink label; `music` and `play` show it
+into `audio`. The anomaly agent only ever sees *predicted* categories
+(correctly mirroring how a real system would work), so a spike in `iot`
+that the classifier silently relabels as `recommendation` is invisible to
+it — not because the detector failed, but because the signal never arrived.
+
+The `weather` window (6x multiplier, 53% classification accuracy) survived
+this dilution and was caught by both detectors on both days; `transport`
+(the deliberately weak 2.5x window) wasn't expected to survive it either
+way. This turned "recall is capped at 0.25, why" from a worrying number
+into a real, traced, one-paragraph root cause — see README.md's Evaluation
+section for the full writeup. Left as a documented finding, not a fix:
+improving the sink-label bias (a better hypothesis template, per-category
+calibration, or a bigger NLI model) is real follow-up work, not something
+attempted in this build.
+
 ---
 
 *(Real end-to-end numbers — translation quality, classification F1 on both

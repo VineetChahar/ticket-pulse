@@ -22,23 +22,23 @@ import json
 import os
 import sys
 
-import numpy as np
 import pandas as pd
 import typer
 from sklearn.metrics import accuracy_score, f1_score
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from src.common import config
 from src.agents.anomaly_agent.detector import cusum_detect, poisson_rate_detect
 from src.agents.classification_agent.taxonomy import SCENARIO_TO_CUSTOM
+from src.common import config
 
 app = typer.Typer(add_completion=False)
 
 
 def load_tickets_scored(run_id: str) -> pd.DataFrame:
     path = os.path.join(config.REPORTS_DIR, run_id, "tickets_scored.jsonl")
-    rows = [json.loads(line) for line in open(path)]
+    with open(path) as f:
+        rows = [json.loads(line) for line in f]
     return pd.DataFrame(rows)
 
 
@@ -52,7 +52,7 @@ def eval_translation(df: pd.DataFrame) -> dict:
     if scored.empty:
         return {"n_scored": 0}
     return {
-        "n_scored": int(len(scored)),
+        "n_scored": len(scored),
         "n_not_sampled_or_canonical": int(len(df) - len(scored)),
         "mean": float(scored["back_translation_score"].mean()),
         "median": float(scored["back_translation_score"].median()),
@@ -73,11 +73,11 @@ def eval_classification(df: pd.DataFrame) -> dict:
     custom_f1 = f1_score(custom_true, custom_pred, average="macro")
 
     return {
-        "scenario_taxonomy": {"accuracy": float(scenario_acc), "macro_f1": float(scenario_f1), "n": int(len(df))},
+        "scenario_taxonomy": {"accuracy": float(scenario_acc), "macro_f1": float(scenario_f1), "n": len(df)},
         "custom_taxonomy_generalization": {
             "accuracy": float(custom_acc),
             "macro_f1": float(custom_f1),
-            "n": int(len(df)),
+            "n": len(df),
             "note": "ground truth here is the silver-standard SCENARIO_TO_CUSTOM mapping, not a human label",
         },
     }
@@ -89,7 +89,8 @@ def eval_hard_examples(run_id: str) -> dict:
     path = os.path.join(config.DATA_DIR, "hard_examples.jsonl")
     if not os.path.exists(path):
         return {"n": 0}
-    examples = [json.loads(line) for line in open(path)]
+    with open(path) as f:
+        examples = [json.loads(line) for line in f]
 
     correct = 0
     rows = []
@@ -101,14 +102,14 @@ def eval_hard_examples(run_id: str) -> dict:
 
     out_path = os.path.join(config.REPORTS_DIR, run_id, "hard_examples_scored.jsonl")
     with open(out_path, "w") as f:
-        for r in rows:
-            f.write(json.dumps(r) + "\n")
+        f.writelines(json.dumps(r) + "\n" for r in rows)
 
     return {"n": len(examples), "accuracy": correct / len(examples) if examples else 0.0, "detail_path": out_path}
 
 
 def load_ground_truth_windows() -> tuple[list[dict], int]:
-    gt = json.load(open(os.path.join(config.DATA_DIR, "ground_truth_anomalies.json")))
+    with open(os.path.join(config.DATA_DIR, "ground_truth_anomalies.json")) as f:
+        gt = json.load(f)
     return gt["windows"], gt["n_days"]
 
 
@@ -220,7 +221,7 @@ def main(run_id: str = typer.Option(..., help="run_id used when the pipeline was
     classification = eval_classification(df)
     hard = eval_hard_examples(run_id)
 
-    windows, n_days = load_ground_truth_windows()
+    windows, _n_days = load_ground_truth_windows()
     count_matrix = build_count_matrix(run_id)
     sweep = sweep_anomaly_thresholds(count_matrix, windows)
 

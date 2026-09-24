@@ -4,9 +4,9 @@ AnomalyFlag on the right day."""
 
 from __future__ import annotations
 
+from src.agents.anomaly_agent.main import RunState, detect_today, get_or_create_state
 from src.common import config
 from src.common.schemas import TicketMessage
-from src.agents.anomaly_agent.main import RunState, detect_today, get_or_create_state
 
 
 def make_ticket(day: int, category: str) -> TicketMessage:
@@ -78,7 +78,8 @@ def test_get_or_create_state_does_not_retruncate_files_on_repeat_calls(tmp_path,
     state2.record_ticket(make_ticket(1, "weather"))
     state2.close_day(1)
 
-    day_counts = open(state1.csv_path).read()
+    with open(state1.csv_path) as f:
+        day_counts = f.read()
     assert "0,weather,1" in day_counts  # day 0's row must survive day 1's activity
     assert "1,weather,1" in day_counts
 
@@ -88,6 +89,7 @@ def test_tickets_scored_jsonl_is_appended_per_ticket(tmp_path, monkeypatch):
     state = RunState("r1")
     state.record_ticket(make_ticket(0, "weather"))
 
-    lines = open(state.tickets_path).read().strip().splitlines()
+    with open(state.tickets_path) as f:
+        lines = f.read().strip().splitlines()
     assert len(lines) == 1
     assert '"predicted_category": "weather"' in lines[0]

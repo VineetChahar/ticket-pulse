@@ -9,10 +9,10 @@ import logging
 import os
 import sys
 
+from src.agents.synthesis_agent.narrative import generate_report
 from src.common import config
 from src.common.broker import Broker
 from src.common.schemas import DaySummary
-from src.agents.synthesis_agent.narrative import generate_report
 
 logging.basicConfig(level=logging.INFO, format="[synthesis_agent] %(message)s")
 log = logging.getLogger(__name__)

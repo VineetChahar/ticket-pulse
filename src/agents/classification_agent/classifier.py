@@ -10,8 +10,8 @@ from __future__ import annotations
 
 from functools import lru_cache
 
-from src.common import config
 from src.agents.classification_agent.taxonomy import CUSTOM_LABELS, SCENARIO_LABELS
+from src.common import config
 
 _HYPOTHESIS_TEMPLATE = "This customer support ticket is about {}."
 
@@ -26,7 +26,7 @@ def _pipeline():
 
 
 class ClassificationResult:
-    __slots__ = ("scenario_label", "scenario_score", "custom_label", "custom_score")
+    __slots__ = ("custom_label", "custom_score", "scenario_label", "scenario_score")
 
     def __init__(self, scenario_label: str, scenario_score: float, custom_label: str, custom_score: float) -> None:
         self.scenario_label = scenario_label

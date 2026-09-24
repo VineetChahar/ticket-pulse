@@ -22,7 +22,7 @@ from __future__ import annotations
 import json
 import os
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from datasets import load_dataset
 
@@ -93,7 +93,7 @@ def anomaly_multiplier(category: str, day: int) -> float:
 
 
 def generate_tickets(pools: dict[str, dict[str, list[str]]], rng: random.Random) -> list[dict]:
-    day0 = datetime(2026, 1, 1, tzinfo=timezone.utc)
+    day0 = datetime(2026, 1, 1, tzinfo=UTC)
     tickets: list[dict] = []
     ticket_seq = 0
 
@@ -160,8 +160,7 @@ def main() -> None:
     print(f"Generated {len(tickets)} tickets across {N_DAYS} days")
 
     with open(os.path.join(out_dir, "tickets.jsonl"), "w") as f:
-        for t in tickets:
-            f.write(json.dumps(t) + "\n")
+        f.writelines(json.dumps(t) + "\n" for t in tickets)
 
     with open(os.path.join(out_dir, "ground_truth_anomalies.json"), "w") as f:
         json.dump({"windows": ANOMALY_WINDOWS, "n_days": N_DAYS}, f, indent=2)
@@ -169,8 +168,7 @@ def main() -> None:
     hard_examples = generate_hard_examples(pools, rng)
     print(f"Generated {len(hard_examples)} hard/ambiguous examples")
     with open(os.path.join(out_dir, "hard_examples.jsonl"), "w") as f:
-        for e in hard_examples:
-            f.write(json.dumps(e) + "\n")
+        f.writelines(json.dumps(e) + "\n" for e in hard_examples)
 
     print("Wrote tickets.jsonl, ground_truth_anomalies.json, hard_examples.jsonl to", out_dir)
 

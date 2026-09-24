@@ -5,8 +5,8 @@ Redis server."""
 from __future__ import annotations
 
 import fakeredis
-import redis
 import pytest
+import redis
 
 from src.common.broker import Broker
 from src.common.schemas import TicketMessage
